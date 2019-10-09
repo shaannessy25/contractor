@@ -4,10 +4,9 @@
 {% block content %}
 <center>
     <h1>Albums</h1>
-</center>
-<div class="row">
-    <a href='/products/<product_id>'>
-        <img src='/static/WhatTheyWant.jpg'width="500" height="500" class="center">
+<div class="img">
+    <a href='/products'>
+        <img src='/static/WhatTheyWant.jpg'width="500" height="500">
         <img src='/static/WhatTheyNeed.jpg' width="500" height="500">
         <br>
         <h1>Gear</h1>
@@ -15,9 +14,17 @@
         <img src='/static/blackHoodie.jpg'width ='500' height='500'>
     </a>
 
+    <h1>Items in cart</h1>
 
+    <a href='/playlists/new'>New Cart</a>
+
+    {% for playlist in playlists %}
+        <h2>{{ products.title }}</h2>
+        <small>{{ products.description }}</small>
+    {% endfor %}
 
 
 
 </div>
+</center>
 {% endblock %}

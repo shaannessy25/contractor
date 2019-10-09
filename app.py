@@ -17,16 +17,21 @@ app = Flask(__name__)
 def contractor_index():
     return render_template('items_index.html', products=products.find())
 
-# @app.route('/cart')
-# def contractor_new():
-#     return render_template('contractor_new.html', products={}, title='Your Cart')
+   
+@app.route('/products', methods=['GET'])
+def items_new():
+    '''Submit a new Item'''
+    # print(request.form.to_dict())
+    return render_template('items_new.html', products={} )
 
-# @app.route('/products', methods=['POST'])
-# def playlists_submit():
-#     product = {
-#         'title': request.form.get('title'),
-#         'description': request.form.get('description'),
-#     }
+@app.route('/products', methods=['POST'])
+def items_submit():
+    product = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description')
+    }
+    products.insert_one(product)
+    return render_template('items_show.html', products=product)
 #     print(product)
 #     product_id = products.insert_one(product).inserted_id
 #     return redirect(url_for('products_show', product_id=product_id))
