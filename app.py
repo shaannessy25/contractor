@@ -10,6 +10,7 @@ db = client.contractor
 # db = client.get_default_database()
 products = db.products
 comments = db.comments
+products.drop()
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ def contractor_index():
     return render_template('items_index.html', products=products.find())
 
    
-@app.route('/products', methods=['GET'])
+@app.route('/products/new', methods=['GET'])
 def items_new():
     '''Submit a new Item'''
     # print(request.form.to_dict())
@@ -28,10 +29,20 @@ def items_new():
 def items_submit():
     product = {
         'title': request.form.get('title'),
-        'description': request.form.get('description')
+        'quantity': request.form.get('quantity')
     }
+    
     products.insert_one(product)
-    return render_template('items_show.html', products=product)
+    return render_template('item_show.html', products=products.find())
+
+
+
+    
+ # return render_template('', products_id=product)
+# @app.route('/products/<products_id>')
+# def playlists_show(products_id):
+#     """Show a single playlist."""
+#     return f'My ID is {playlist_id}'
 #     print(product)
 #     product_id = products.insert_one(product).inserted_id
 #     return redirect(url_for('products_show', product_id=product_id))
