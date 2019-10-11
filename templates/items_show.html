@@ -11,7 +11,13 @@
         <p>
             <a href="/products/{{ product._id }}/edit">
                 <button  class="btn btn-primary">Edit</button>
+
             </a>
+            <p><form method="POST" action="/products/{{ product._id}}/delete">
+                <input type='hidden' name='_method' value='DELETE'>
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+            </p>
         </p>
     </div>
 

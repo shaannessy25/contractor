@@ -56,22 +56,11 @@ def item_edit(product_id):
     product = products.find_one({'_id': ObjectId(product_id)})
     return render_template('items_edit.html', product=product)
 
+@app.route("/products/<product_id>/delete", methods=["POST"])
+def items_delete(product_id):
+	products.delete_one({"_id" : ObjectId(product_id)})
+	return redirect(url_for("contractor_index"))
 
-    
- # return render_template('', products_id=product)
-# @app.route('/products/<products_id>')
-# def playlists_show(products_id):
-#     """Show a single playlist."""
-#     return f'My ID is {playlist_id}'
-#     print(product)
-#     product_id = products.insert_one(product).inserted_id
-#     return redirect(url_for('products_show', product_id=product_id))
-
-# @app.route('/products/<product_id>')
-# def contractor_show(product_id):
-#     product = products.find_one({'_id': ObjectId(product_id)})
-#     product_comments = comments.find({'product_id': ObjectId(product_id)})
-#     return render_template('contractor_show.html', product=product, comments=product_comments)
 
 
 
