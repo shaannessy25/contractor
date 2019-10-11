@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+		<form method='POST' action='/products/{{product._id}}'>
+            <fieldset>
+                <legend>Product</legend>
+                <!-- TITLE -->
+                <p>
+                    <label for='title'>Name of Item </label><br>
+                    <input type='text' name='title' />
+                </p>
+                <p>
+                    <label for='quantity'> Quantity </label><br>
+                    <input type='text' name='quantity' />
+                </p>
+                </fieldset>
+            
+                <!-- BUTTON -->
+                <p>
+                    <button type='submit'>Save Item</button>
+                </p> 
+            </fieldset>        
+        </form>
+		   
+	</div>
+</form>
+</div>	
+
+<div class="row">
+	<div class='col-sm-6 col-sm-offset-3'>
+		<a href="/products/{{product._id}}"><button class="btn btn-danger"> Cancel</button></a>
+	</div>
+</div>
+{% endblock %}
